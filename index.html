@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta name=”twitter:card” content=”summary“>
+  <meta name=”twitter:site” content=”@_riceham“>
+  <meta property='og:type' content="website">
+  <meta property='og:title' content="Harmonic-plus-Noise Unified Source-Filter GAN Demo">
+  <meta property='og:url' content="https://chomeyama.github.io/Profile/">
+  <meta property='og:description' content="Project demo page. If you have any questions, please contact me by email.">
+  <meta property="og:image" content="img/me2.jpg">
+  <meta name="description" content="Harmonic-plus-Noise Unified Source-Filter GAN Demo">
+  <title>Harmonic-plus-Noise Unified Source-Filter GAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="css/style.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="img/me2.jpg">
+  <link rel=”canonical” href=”https://chomeyama.github.io/Profile/”>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header">
+      <h2><a href="https://chomeyama.github.io/Profile/">Reo YONEYAMA / Home</a></h2>
+      <nav class="pc-nav">
+        <ul id="nav">
+          <li id="nav"><a href="#abstract">Abstract</a></li>
+          <li id="nav"><a href="#demo">Demo</a></li>
+          <li id="nav"><a href="#citation">Citation</a></li>
+        </ul>
+      </nav>
+      <nav class="sp-nav">
+        <ul id="sp-nav">
+          <li id="sp-nav"><a href="#abstract">Abstract</a></li>
+          <li id="sp-nav"><a href="#demo">Demo</a></li>
+          <li id="sp-nav"><a href="#citation">Citation</a></li>
+          <li class="close"><span>Close</span></li>
+        </ul>
+      </nav>
+      <div id="hamburger">
+        <span></span>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <div class="paper_info">
+        <h1>Unified Source-Filter GAN with Harmonic-plus-Noise Source Excitation Generation</h1>
+        <h2 style="color: #000050;">Reo Yoneyama, Yi-Chiao Wu, Tomoki Toda</h2>
+        <h2>Nagoya University</h2>
+        <h2 style="margin-top: 10px;">Submitted to <a href="">InterSpeech 2022 (Under Review)</a>
+        </h2>
+      </div>
+
+      <h2 class="sectitle">Abstract</h2>
+      <div id="abstract" class="section">
+        <p align="justify"> This paper introduces a unified source-filter network with a harmonic-plus-noise source
+          excitation generation mechanism. In our previous work, we proposed unified Source-Filter GAN (uSFGAN) for
+          developing a high-fidelity neural vocoder with flexible voice controllability using a unified source-filter
+          neural network architecture. However, the capability of uSFGAN to model the aperiodic source excitation signal
+          is insufficient, and there is still a gap in sound quality between the natural and generated speech. To
+          improve the source excitation modeling and generated sound quality, a new source excitation generation network
+          separately generating periodic and aperiodic components is proposed. The advanced adversarial training
+          procedure of HiFiGAN is also adopted to replace that of Parallel WaveGAN used in the original uSFGAN. Both
+          objective and subjective evaluation results show that the modified uSFGAN significantly improves the sound
+          quality of the basic uSFGAN while maintaining the voice controllability.</p>
+        <h3 style="text-align: center;">[<a href="https://arxiv.org/abs/2205.06053">Arxiv</a>] [<a
+            href="https://github.com/chomeyama/HN-UnifiedSourceFilterGAN">Code</a>]</h3>
+      </div>
+
+      <div class="images1">
+        <figure>
+          <img src="img/usfgan.png" alt="uSFGAN" title="uSFGAN">
+          <figcaption>uSFGAN architecture</figcaption>
+        </figure>
+      </div>
+      <div class="images1">
+        <figure>
+          <img src="img/hn-source-network.png" alt="HN-uSFGAN generator" title="HN-uSFGAN generator">
+          <figcaption>Harmonic-plus-Noise uSFGAN generator</figcaption>
+        </figure>
+      </div>
+
+      <div class="images1">
+        <figure>
+          <img src="img/result_table.png" alt="result" title="result">
+          <figcaption>Table of results of objective and subjective evaluations. The best results and those that are not
+            significantly different from them are highlighted in bold.</figcaption>
+        </figure>
+      </div>
+
+      <div class=" images1">
+        <figure>
+          <img src="img/har_noi_ref.png" alt="Plot of waveform and spectrogram" title="Plot of waveform and spectrogram"
+            style="max-width: 70%;">
+          <figcaption>Waveforms of output periodic and aperiodic source excitation signals and the natural speech from
+            top to bottom for 400 [ms].</figcaption>
+        </figure>
+      </div>
+
+      <div class=" images1">
+        <figure>
+          <img src="img/source_wave_f0_trans.png" alt="Plot of waveform and spectrogram"
+            title="Plot of waveform and spectrogram" style="max-width: 70%;">
+          <figcaption>Waveforms of output source excitation signals with different F<sub>0</sub> scaling factors (0.5,
+            1.0, and 2.0
+            from top to bottom) for 40 [ms]. The original F<sub>0</sub> values over
+            this segment are around 180 Hz.</figcaption>
+        </figure>
+      </div>
+
+      <h2 class="sectitle">Demo</h2>
+      <div id="demo" class="section">
+
+        <p>Comparison with baselines on VCTK [1] corpus. The baseline models are WORLD [2] and uSFGAN [3]. The speech
+          samples are randomly selected.</p>
+        <br>
+
+        <div class="selects">
+          <label for="utt_id">Utterance ID</label>
+          <div class="simple_select">
+            <select required id="utt_id" name="utt_id">
+              <option value="p227_034" selected>p227_034</option>
+              <option value="p229_012">p229_012</option>
+              <option value="p231_099">p231_099</option>
+              <option value="p233_087">p233_087</option>
+              <option value="p234_269">p234_269</option>
+              <option value="p236_392">p236_392</option>
+              <option value="p239_058">p239_058</option>
+              <option value="p300_004">p300_004</option>
+              <option value="p308_258">p308_258</option>
+              <option value="p310_352">p310_352</option>
+              <option value="p311_018">p311_018</option>
+              <option value="p330_329">p330_329</option>
+              <option value="p363_419">p363_419</option>
+              <option value="p374_423">p374_423</option>
+            </select>
+          </div>
+
+          <div class="button">
+            <input type="button" value="OK" onclick="clickBtn()">
+          </div>
+        </div>
+
+        <script>
+          function clickBtn() {
+            var utt_id = document.getElementById('utt_id');
+            utt_id.options[utt_id.selectedIndex].selected = true;
+            document.getElementById("natural").src = "audio/" + "natural" + "/" + utt_id.value + ".wav";
+            const methods = ["world", "usfgan", "hn-usfgan"];
+            const f0_factors = ["_f0.50", "_f0.71", "", "_f1.41", "_f2.00"];
+            for (const m of methods) {
+              for (const f of f0_factors) {
+                document.getElementById(m + f).src = "audio/" + m + "/" + utt_id.value + f + ".wav";
+              }
+            }
+          }
+        </script>
+
+        <table class="audio_table">
+          <thead>
+            <tr>
+              <th style="text-align: left">Model</th>
+              <th style="text-align: center">Reconstruct</th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-1.0</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.5</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>0.5</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>1.0</sup></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left">Natural</td>
+              <td style="text-align: center"><audio id="natural" src="audio/natural/p374_423.wav" controls=""
+                  preload=""></audio>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">WORLD</td>
+              <td style="text-align: center"><audio id="world" src="audio/world/p374_423.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f0.50" src="audio/world/p374_423_f0.50.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f0.71" src="audio/world/p374_423_f0.71.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f1.41" src="audio/world/p374_423_f1.41.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f2.00" src="audio/world/p374_423_f2.00.wav" controls=""
+                  preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">uSFGAN</td>
+              <td style="text-align: center"><audio id="usfgan" src="audio/usfgan/p374_423.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f0.50" src="audio/usfgan/p374_423_f0.50.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f0.71" src="audio/usfgan/p374_423_f0.71.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f1.41" src="audio/usfgan/p374_423_f1.41.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f2.00" src="audio/usfgan/p374_423_f2.00.wav" controls=""
+                  preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left">HN-uSFGAN</td>
+              <td style="text-align: center"><audio id="hn-usfgan" src="audio/hn-usfgan/p374_423.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f0.50" src="audio/hn-usfgan/p374_423_f0.50.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f0.71" src="audio/hn-usfgan/p374_423_f0.71.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f1.41" src="audio/hn-usfgan/p374_423_f1.41.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f2.00" src="audio/hn-usfgan/p374_423_f2.00.wav"
+                  controls="" preload=""></audio>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="sectitle">Citation</h2>
+      <div id="citation" class="section">
+        <p>@misc{https://doi.org/10.48550/arxiv.2205.06053,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doi = {10.48550/ARXIV.2205.06053},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url = {https://arxiv.org/abs/2205.06053},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author = {Yoneyama, Reo and Wu, Yi-Chiao and Toda,
+          Tomoki},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keywords = {Sound (cs.SD), Machine Learning (cs.LG), Audio and
+          Speech Processing (eess.AS), FOS: Computer and
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;information sciences, FOS: Computer and information sciences,
+          FOS: Electrical engineering, electronic
+          engineering, information engineering, FOS: Electrical engineering, electronic engineering, information
+          engineering},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title = {Unified Source-Filter GAN with Harmonic-plus-Noise
+          Source Excitation Generation},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;publisher = {arXiv},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year = {2022},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copyright = {arXiv.org perpetual, non-exclusive license}<br>
+          }</p>
+      </div>
+
+      <h2 class="sectitle">References</h2>
+      <div id="references" class="section">
+        <p>[1] Junichi Yamagishi, Christophe Veaux, and Kirsten MacDonald, “Cstr vctk corpus: English multi-speaker
+          corpus for cstr voice cloning toolkit,” 2019.</p>
+        <p>[2] M. Morise, F. Yokomori, and K. Ozawa, “WORLD: a vocoderbased high-quality speech synthesis system for
+          real-time applications,” IEICE Transactions on Information and Systems, vol. 99,
+          no. 7, pp. 1877–1884, 2016.</p>
+        <p>[3] R. Yoneyama, Y.-C. Wu, and T. Toda, “Unified Source-Filter GAN: Unified Source-Filter Network Based On
+          Factorization of Quasi-Periodic Parallel WaveGAN,” in Proc. Interspeech 2021, 2021, pp. 2187–2191.</p>
+      </div>
+
+    </div>
+
+    <div class="page-top" id="js-page-top">
+      <span class="material-icons-outlined">expand_less</span>
+    </div>
+
+    <footer>
+      <a class="copyright">Copyright&copy;2021.</a>
+      <a href="https://github.com/chomeyama/" target="_blank">
+        <img class="icon" src="img/github_icon.png" alt="GitHub icon">
+      </a>
+      <a href="https://twitter.com/_riceham/" target="_blank">
+        <img class="icon" src="img/twitter_icon.png" alt="Twitter icon">
+      </a>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type='text/javascript' src="js/script.js"></script>
+</body>
+
+</html>

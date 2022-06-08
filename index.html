@@ -50,7 +50,8 @@
 
       <div class="paper_info">
         <h1>Unified Source-Filter GAN with Harmonic-plus-Noise Source Excitation Generation</h1>
-        <h2 style="color: #000050;">Reo Yoneyama, Yi-Chiao Wu, Tomoki Toda</h2>
+        <h2 class="author">Reo Yoneyama, <a href="https://bigpon.github.io/">Yi-Chiao Wu</a>, <a
+            href="https://sites.google.com/site/tomokitoda/">Tomoki Toda</a></h2>
         <h2>Nagoya University</h2>
         <h2 style="margin-top: 10px;">Submitted to <a href="">InterSpeech 2022 (Under Review)</a>
         </h2>
@@ -116,10 +117,14 @@
       <h2 class="sectitle">Demo</h2>
       <div id="demo" class="section">
 
-        <p>Comparison on VCTK [1] corpus. The baseline models are WORLD [2] and uSFGAN [3]. &quot;HN-uSFGAN w/o
-          HiFi-D&quot; denotes the proposed model without HiFiGAN [4] discriminator but with Parallel WaveGAN [5]
-          discriminator. The speech
-          samples are randomly selected.</p>
+        <p>Comparison on VCTK [1] corpus. The speech
+          samples are randomly selected. The baseline models are WORLD [2] and uSFGAN [3]. &quot;-
+          Reg-loss&quot; denotes HN-uSFGAN trained without proposed regularization loss but with the one of uSFGAN.
+          &quot;- HN-SN&quot; denotes HN-uSFGAN without proposed harmonic-plus-noise source excitation generation
+          network but with the one of uSFGAN. &quot;- HiFi-D&quot; denotes HN-uSFGAN trained without the HiFiGAN [4]
+          discriminator but with the Parallel WaveGAN [5] discriminator. &quot;- Mel-loss&quot; denotes HN-uSFGAN
+          trained without mel-spectral L1 loss but with multi-resolution STFT loss [5]. Please also see the demo of our
+          previous work uSFGAN <a href="https://chomeyama.github.io/UnifiedSourceFilterGAN-Demo/">here</a>.</p>
         <br>
 
         <div class="selects">
@@ -153,7 +158,7 @@
             var utt_id = document.getElementById('utt_id');
             utt_id.options[utt_id.selectedIndex].selected = true;
             document.getElementById("natural").src = "audio/" + "natural" + "/" + utt_id.value + ".wav";
-            const methods = ["world", "usfgan", "hn-usfgan", "hn-usfgan-hifid"];
+            const methods = ["world", "usfgan", "hn-usfgan", "hn-usfgan-reg", "hn-usfgan-hnsn", "hn-usfgan-hifid", "hn-usfgan-mel"];
             const f0_factors = ["_f0.50", "_f0.71", "", "_f1.41", "_f2.00"];
             for (const m of methods) {
               for (const f of f0_factors) {
@@ -166,7 +171,7 @@
         <table class="audio_table">
           <thead>
             <tr>
-              <th style="text-align: left">Model</th>
+              <th style="text-align: center">Model</th>
               <th style="text-align: center">Reconstruct</th>
               <th style="text-align: center">F<sub>0</sub> x 2<sup>-1.0</sup></th>
               <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.5</sup></th>
@@ -176,14 +181,14 @@
           </thead>
           <tbody>
             <tr>
-              <td style="text-align: left">Natural</td>
+              <td style="text-align: left" class="method_name">Natural</td>
               <td style="text-align: center"><audio id="natural" src="audio/natural/p374_423.wav" controls=""
                   preload=""></audio>
               <td style="text-align: center"><audio src="" preload=""></audio></td>
               </td>
             </tr>
             <tr>
-              <td style="text-align: left">WORLD</td>
+              <td style="text-align: left" class="method_name">WORLD</td>
               <td style="text-align: center"><audio id="world" src="audio/world/p374_423.wav" controls=""
                   preload=""></audio>
               </td>
@@ -201,7 +206,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left">uSFGAN</td>
+              <td style="text-align: left" class="method_name">uSFGAN</td>
               <td style="text-align: center"><audio id="usfgan" src="audio/usfgan/p374_423.wav" controls=""
                   preload=""></audio>
               </td>
@@ -219,7 +224,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left">HN-uSFGAN</td>
+              <td style="text-align: left" class="method_name">HN-uSFGAN</td>
               <td style="text-align: center"><audio id="hn-usfgan" src="audio/hn-usfgan/p374_423.wav" controls=""
                   preload=""></audio>
               </td>
@@ -237,7 +242,43 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left">HN-uSFGAN w/o HiFi-D</td>
+              <td style="text-align: left" class="method_name">&nbsp; - Reg-loss</td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg" src="audio/hn-usfgan-reg/p374_423.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f0.50"
+                  src="audio/hn-usfgan-reg/p374_423_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f0.71"
+                  src="audio/hn-usfgan-reg/p374_423_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f1.41"
+                  src="audio/hn-usfgan-reg/p374_423_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f2.00"
+                  src="audio/hn-usfgan-reg/p374_423_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">&nbsp; - HN-SN</td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn" src="audio/hn-usfgan-hnsn/p374_423.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f0.50"
+                  src="audio/hn-usfgan-hnsn/p374_423_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f0.71"
+                  src="audio/hn-usfgan-hnsn/p374_423_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f1.41"
+                  src="audio/hn-usfgan-hnsn/p374_423_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f2.00"
+                  src="audio/hn-usfgan-hnsn/p374_423_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">&nbsp; - HiFi-D</td>
               <td style="text-align: center"><audio id="hn-usfgan-hifid" src="audio/hn-usfgan-hifid/p374_423.wav"
                   controls="" preload=""></audio>
               </td>
@@ -252,6 +293,24 @@
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hifid_f2.00"
                   src="audio/hn-usfgan-hifid/p374_423_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">&nbsp; - Mel-loss</td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel" src="audio/hn-usfgan-mel/p374_423.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f0.50"
+                  src="audio/hn-usfgan-mel/p374_423_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f0.71"
+                  src="audio/hn-usfgan-mel/p374_423_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f1.41"
+                  src="audio/hn-usfgan-mel/p374_423_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f2.00"
+                  src="audio/hn-usfgan-mel/p374_423_f2.00.wav" controls="" preload=""></audio>
               </td>
             </tr>
           </tbody>

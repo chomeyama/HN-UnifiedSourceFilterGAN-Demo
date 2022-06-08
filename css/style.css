@@ -195,6 +195,14 @@ nav {
   margin-bottom: 0;
 }
 
+.author {
+  color: #000050;
+}
+
+.author a {
+  color: #000050;
+}
+
 /*--------------------------------
  Abstract
 ---------------------------------*/
@@ -309,6 +317,10 @@ table {
 .audio_table td {
   border: solid 1px #ccc;
   padding: 10px;
+}
+
+td.method_name {
+  white-space: nowrap;
 }
 
 /*--------------------------------

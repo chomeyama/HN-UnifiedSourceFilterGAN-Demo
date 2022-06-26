@@ -8,8 +8,8 @@
   <meta name=”twitter:site” content=”@_riceham“>
   <meta property='og:type' content="website">
   <meta property='og:title' content="Harmonic-plus-Noise Unified Source-Filter GAN Demo">
-  <meta property='og:url' content="https://chomeyama.github.io/Profile/">
-  <meta property='og:description' content="Project demo page. If you have any questions, please contact me by email.">
+  <meta property='og:url' content="https://chomeyama.github.io/HN-UnifiedSourceFilterGAN-Demo/">
+  <meta property='og:description' content="Project demo page.">
   <meta property="og:image" content="img/me2.jpg">
   <meta name="description" content="Harmonic-plus-Noise Unified Source-Filter GAN Demo">
   <title>Harmonic-plus-Noise Unified Source-Filter GAN</title>
@@ -131,17 +131,11 @@
           <label for="utt_id">Utterance ID</label>
           <div class="simple_select">
             <select required id="utt_id" name="utt_id">
-              <option value="p227_034" selected>p227_034</option>
-              <option value="p229_012">p229_012</option>
-              <option value="p231_099">p231_099</option>
+              <option value="p229_012" selected>p229_012</option>
               <option value="p233_087">p233_087</option>
-              <option value="p234_269">p234_269</option>
-              <option value="p236_392">p236_392</option>
-              <option value="p239_058">p239_058</option>
-              <option value="p300_004">p300_004</option>
-              <option value="p308_258">p308_258</option>
+              <option value="p260_019">p260_019</option>
+              <option value="p271_405">p271_405</option>
               <option value="p310_352">p310_352</option>
-              <option value="p311_018">p311_018</option>
               <option value="p330_329">p330_329</option>
               <option value="p363_419">p363_419</option>
               <option value="p374_423">p374_423</option>
@@ -157,9 +151,9 @@
           function clickBtn() {
             var utt_id = document.getElementById('utt_id');
             utt_id.options[utt_id.selectedIndex].selected = true;
-            document.getElementById("natural").src = "audio/" + "natural" + "/" + utt_id.value + ".wav";
+            document.getElementById("natural_f1.00").src = "audio/" + "natural" + "/" + utt_id.value + "_f1.00.wav";
             const methods = ["world", "usfgan", "hn-usfgan", "hn-usfgan-reg", "hn-usfgan-hnsn", "hn-usfgan-hifid", "hn-usfgan-mel"];
-            const f0_factors = ["_f0.50", "_f0.71", "", "_f1.41", "_f2.00"];
+            const f0_factors = ["_f0.50", "_f0.59", "_f0.71", "_f0.84", "_f1.00", "_f1.19", "_f1.41", "_f1.68", "_f2.00"];
             for (const m of methods) {
               for (const f of f0_factors) {
                 document.getElementById(m + f).src = "audio/" + m + "/" + utt_id.value + f + ".wav";
@@ -173,144 +167,232 @@
             <tr>
               <th style="text-align: center">Model</th>
               <th style="text-align: center">Reconstruct</th>
-              <th style="text-align: center">F<sub>0</sub> x 2<sup>-1.0</sup></th>
-              <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.5</sup></th>
-              <th style="text-align: center">F<sub>0</sub> x 2<sup>0.5</sup></th>
-              <th style="text-align: center">F<sub>0</sub> x 2<sup>1.0</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-1.00</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.75</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.50</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.25</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>0.25</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>0.50</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>0.75</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>1.00</sup></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td style="text-align: left" class="method_name">Natural</td>
-              <td style="text-align: center"><audio id="natural" src="audio/natural/p374_423.wav" controls=""
-                  preload=""></audio>
+              <td style="text-align: center"><audio id="natural_f1.00" src="audio/natural/p229_012_f1.00.wav"
+                  controls="" preload=""></audio>
               <td style="text-align: center"><audio src="" preload=""></audio></td>
               </td>
             </tr>
             <tr>
               <td style="text-align: left" class="method_name">WORLD</td>
-              <td style="text-align: center"><audio id="world" src="audio/world/p374_423.wav" controls=""
+              <td style="text-align: center"><audio id="world_f1.00" src="audio/world/p229_012_f1.00.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="world_f0.50" src="audio/world/p374_423_f0.50.wav" controls=""
+              <td style="text-align: center"><audio id="world_f0.50" src="audio/world/p229_012_f0.50.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="world_f0.71" src="audio/world/p374_423_f0.71.wav" controls=""
+              <td style="text-align: center"><audio id="world_f0.59" src="audio/world/p229_012_f0.59.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="world_f1.41" src="audio/world/p374_423_f1.41.wav" controls=""
+              <td style="text-align: center"><audio id="world_f0.84" src="audio/world/p229_012_f0.84.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="world_f2.00" src="audio/world/p374_423_f2.00.wav" controls=""
+              <td style="text-align: center"><audio id="world_f0.71" src="audio/world/p229_012_f0.71.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f1.19" src="audio/world/p229_012_f1.19.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f1.41" src="audio/world/p229_012_f1.41.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f1.68" src="audio/world/p229_012_f1.68.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f2.00" src="audio/world/p229_012_f2.00.wav" controls=""
                   preload=""></audio>
               </td>
             </tr>
             <tr>
               <td style="text-align: left" class="method_name">uSFGAN</td>
-              <td style="text-align: center"><audio id="usfgan" src="audio/usfgan/p374_423.wav" controls=""
+              <td style="text-align: center"><audio id="usfgan_f1.00" src="audio/usfgan/p229_012_f1.00.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="usfgan_f0.50" src="audio/usfgan/p374_423_f0.50.wav" controls=""
+              <td style="text-align: center"><audio id="usfgan_f0.50" src="audio/usfgan/p229_012_f0.50.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="usfgan_f0.71" src="audio/usfgan/p374_423_f0.71.wav" controls=""
+              <td style="text-align: center"><audio id="usfgan_f0.59" src="audio/usfgan/p229_012_f0.59.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="usfgan_f1.41" src="audio/usfgan/p374_423_f1.41.wav" controls=""
+              <td style="text-align: center"><audio id="usfgan_f0.71" src="audio/usfgan/p229_012_f0.71.wav" controls=""
                   preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="usfgan_f2.00" src="audio/usfgan/p374_423_f2.00.wav" controls=""
+              <td style="text-align: center"><audio id="usfgan_f0.84" src="audio/usfgan/p229_012_f0.84.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f1.19" src="audio/usfgan/p229_012_f1.19.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f1.41" src="audio/usfgan/p229_012_f1.41.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f1.68" src="audio/usfgan/p229_012_f1.68.wav" controls=""
+                  preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="usfgan_f2.00" src="audio/usfgan/p229_012_f2.00.wav" controls=""
                   preload=""></audio>
               </td>
             </tr>
             <tr>
               <td style="text-align: left" class="method_name">HN-uSFGAN</td>
-              <td style="text-align: center"><audio id="hn-usfgan" src="audio/hn-usfgan/p374_423.wav" controls=""
-                  preload=""></audio>
-              </td>
-              <td style="text-align: center"><audio id="hn-usfgan_f0.50" src="audio/hn-usfgan/p374_423_f0.50.wav"
+              <td style="text-align: center"><audio id="hn-usfgan_f1.00" src="audio/hn-usfgan/p229_012_f1.00.wav"
                   controls="" preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="hn-usfgan_f0.71" src="audio/hn-usfgan/p374_423_f0.71.wav"
+              <td style="text-align: center"><audio id="hn-usfgan_f0.50" src="audio/hn-usfgan/p229_012_f0.50.wav"
                   controls="" preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="hn-usfgan_f1.41" src="audio/hn-usfgan/p374_423_f1.41.wav"
+              <td style="text-align: center"><audio id="hn-usfgan_f0.59" src="audio/hn-usfgan/p229_012_f0.59.wav"
                   controls="" preload=""></audio>
               </td>
-              <td style="text-align: center"><audio id="hn-usfgan_f2.00" src="audio/hn-usfgan/p374_423_f2.00.wav"
+              <td style="text-align: center"><audio id="hn-usfgan_f0.71" src="audio/hn-usfgan/p229_012_f0.71.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f0.84" src="audio/hn-usfgan/p229_012_f0.84.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f1.19" src="audio/hn-usfgan/p229_012_f1.19.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f1.41" src="audio/hn-usfgan/p229_012_f1.41.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f1.68" src="audio/hn-usfgan/p229_012_f1.68.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan_f2.00" src="audio/hn-usfgan/p229_012_f2.00.wav"
                   controls="" preload=""></audio>
               </td>
             </tr>
             <tr>
               <td style="text-align: left" class="method_name">&nbsp; - Reg-loss</td>
-              <td style="text-align: center"><audio id="hn-usfgan-reg" src="audio/hn-usfgan-reg/p374_423.wav"
-                  controls="" preload=""></audio>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f1.00"
+                  src="audio/hn-usfgan-reg/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-reg_f0.50"
-                  src="audio/hn-usfgan-reg/p374_423_f0.50.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-reg/p229_012_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f0.59"
+                  src="audio/hn-usfgan-reg/p229_012_f0.59.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-reg_f0.71"
-                  src="audio/hn-usfgan-reg/p374_423_f0.71.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-reg/p229_012_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f0.84"
+                  src="audio/hn-usfgan-reg/p229_012_f0.84.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f1.19"
+                  src="audio/hn-usfgan-reg/p229_012_f1.19.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-reg_f1.41"
-                  src="audio/hn-usfgan-reg/p374_423_f1.41.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-reg/p229_012_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-reg_f1.68"
+                  src="audio/hn-usfgan-reg/p229_012_f1.68.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-reg_f2.00"
-                  src="audio/hn-usfgan-reg/p374_423_f2.00.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-reg/p229_012_f2.00.wav" controls="" preload=""></audio>
               </td>
             </tr>
             <tr>
               <td style="text-align: left" class="method_name">&nbsp; - HN-SN</td>
-              <td style="text-align: center"><audio id="hn-usfgan-hnsn" src="audio/hn-usfgan-hnsn/p374_423.wav"
-                  controls="" preload=""></audio>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f1.00"
+                  src="audio/hn-usfgan-hnsn/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hnsn_f0.50"
-                  src="audio/hn-usfgan-hnsn/p374_423_f0.50.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hnsn/p229_012_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f0.59"
+                  src="audio/hn-usfgan-hnsn/p229_012_f0.59.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hnsn_f0.71"
-                  src="audio/hn-usfgan-hnsn/p374_423_f0.71.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hnsn/p229_012_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f0.84"
+                  src="audio/hn-usfgan-hnsn/p229_012_f0.84.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f1.19"
+                  src="audio/hn-usfgan-hnsn/p229_012_f1.19.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hnsn_f1.41"
-                  src="audio/hn-usfgan-hnsn/p374_423_f1.41.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hnsn/p229_012_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hnsn_f1.68"
+                  src="audio/hn-usfgan-hnsn/p229_012_f1.68.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hnsn_f2.00"
-                  src="audio/hn-usfgan-hnsn/p374_423_f2.00.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hnsn/p229_012_f2.00.wav" controls="" preload=""></audio>
               </td>
             </tr>
             <tr>
               <td style="text-align: left" class="method_name">&nbsp; - HiFi-D</td>
-              <td style="text-align: center"><audio id="hn-usfgan-hifid" src="audio/hn-usfgan-hifid/p374_423.wav"
-                  controls="" preload=""></audio>
+              <td style="text-align: center"><audio id="hn-usfgan-hifid_f1.00"
+                  src="audio/hn-usfgan-hifid/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hifid_f0.50"
-                  src="audio/hn-usfgan-hifid/p374_423_f0.50.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hifid/p229_012_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hifid_f0.59"
+                  src="audio/hn-usfgan-hifid/p229_012_f0.59.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hifid_f0.71"
-                  src="audio/hn-usfgan-hifid/p374_423_f0.71.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hifid/p229_012_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hifid_f0.84"
+                  src="audio/hn-usfgan-hifid/p229_012_f0.84.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hifid_f1.19"
+                  src="audio/hn-usfgan-hifid/p229_012_f1.19.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hifid_f1.41"
-                  src="audio/hn-usfgan-hifid/p374_423_f1.41.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hifid/p229_012_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-hifid_f1.68"
+                  src="audio/hn-usfgan-hifid/p229_012_f1.68.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-hifid_f2.00"
-                  src="audio/hn-usfgan-hifid/p374_423_f2.00.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-hifid/p229_012_f2.00.wav" controls="" preload=""></audio>
               </td>
             </tr>
             <tr>
               <td style="text-align: left" class="method_name">&nbsp; - Mel-loss</td>
-              <td style="text-align: center"><audio id="hn-usfgan-mel" src="audio/hn-usfgan-mel/p374_423.wav"
-                  controls="" preload=""></audio>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f1.00"
+                  src="audio/hn-usfgan-mel/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-mel_f0.50"
-                  src="audio/hn-usfgan-mel/p374_423_f0.50.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-mel/p229_012_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f0.59"
+                  src="audio/hn-usfgan-mel/p229_012_f0.59.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-mel_f0.71"
-                  src="audio/hn-usfgan-mel/p374_423_f0.71.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-mel/p229_012_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f0.84"
+                  src="audio/hn-usfgan-mel/p229_012_f0.84.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f1.19"
+                  src="audio/hn-usfgan-mel/p229_012_f1.19.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-mel_f1.41"
-                  src="audio/hn-usfgan-mel/p374_423_f1.41.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-mel/p229_012_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hn-usfgan-mel_f1.68"
+                  src="audio/hn-usfgan-mel/p229_012_f1.68.wav" controls="" preload=""></audio>
               </td>
               <td style="text-align: center"><audio id="hn-usfgan-mel_f2.00"
-                  src="audio/hn-usfgan-mel/p374_423_f2.00.wav" controls="" preload=""></audio>
+                  src="audio/hn-usfgan-mel/p229_012_f2.00.wav" controls="" preload=""></audio>
               </td>
             </tr>
           </tbody>

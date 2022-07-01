@@ -303,6 +303,10 @@ nav {
 }
 
 table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
   width: 95%;
   margin: 1% auto 0 auto;
 }

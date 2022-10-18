@@ -168,7 +168,7 @@
         <table class="audio_table">
           <thead>
             <tr>
-              <th style="text-align: center">Model</th>
+              <th style="text-align: center" class="td_fixed">Model</th>
               <th style="text-align: center">Reconstruct</th>
               <th style="text-align: center">F<sub>0</sub> x 2<sup>-1.00</sup></th>
               <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.75</sup></th>
@@ -182,14 +182,21 @@
           </thead>
           <tbody>
             <tr>
-              <td style="text-align: left" class="method_name">Natural</td>
+              <td style="text-align: left" class="td_fixed">Natural</td>
               <td style="text-align: center"><audio id="natural_f1.00" src="audio/natural/p229_012_f1.00.wav"
                   controls="" preload=""></audio>
-              <td style="text-align: center"><audio src="" preload=""></audio></td>
               </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
-              <td style="text-align: left" class="method_name">WORLD</td>
+              <td style="text-align: left" class="td_fixed">WORLD</td>
               <td style="text-align: center"><audio id="world_f1.00" src="audio/world/p229_012_f1.00.wav" controls=""
                   preload=""></audio>
               </td>
@@ -219,7 +226,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="method_name">uSFGAN</td>
+              <td style="text-align: left" class="td_fixed">uSFGAN</td>
               <td style="text-align: center"><audio id="usfgan_f1.00" src="audio/usfgan/p229_012_f1.00.wav" controls=""
                   preload=""></audio>
               </td>
@@ -249,7 +256,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="method_name">HN-uSFGAN</td>
+              <td style="text-align: left" class="td_fixed">HN-uSFGAN<br>(Proposed)</td>
               <td style="text-align: center"><audio id="hn-usfgan_f1.00" src="audio/hn-usfgan/p229_012_f1.00.wav"
                   controls="" preload=""></audio>
               </td>
@@ -279,7 +286,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="method_name">&nbsp; - Reg-loss</td>
+              <td style="text-align: left" class="td_fixed">HN-uSFGAN<br> - Reg-loss</td>
               <td style="text-align: center"><audio id="hn-usfgan-reg_f1.00"
                   src="audio/hn-usfgan-reg/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -309,7 +316,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="method_name">&nbsp; - HN-SN</td>
+              <td style="text-align: left" class="td_fixed">HN-uSFGAN<br> - HN-SN</td>
               <td style="text-align: center"><audio id="hn-usfgan-hnsn_f1.00"
                   src="audio/hn-usfgan-hnsn/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -339,7 +346,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="method_name">&nbsp; - HiFi-D</td>
+              <td style="text-align: left" class="td_fixed">HN-uSFGAN<br> - HiFi-D</td>
               <td style="text-align: center"><audio id="hn-usfgan-hifid_f1.00"
                   src="audio/hn-usfgan-hifid/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -369,7 +376,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="method_name">&nbsp; - Mel-loss</td>
+              <td style="text-align: left" class="td_fixed">HN-uSFGAN<br> - Mel-loss</td>
               <td style="text-align: center"><audio id="hn-usfgan-mel_f1.00"
                   src="audio/hn-usfgan-mel/p229_012_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -425,7 +432,7 @@
         <p>[3] R. Yoneyama, Y.-C. Wu, and T. Toda, “Unified Source-Filter GAN: Unified Source-Filter Network Based On
           Factorization of Quasi-Periodic Parallel WaveGAN,” in Proc. Interspeech, 2021, pp. 2187–2191.</p>
         <p>[4] J. Kong, J. Kim, and J. Bae, “HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity
-          Speech Synthesis,” in Advances in NeurIPS, 2020, vol. 33, pp. 17022–17033.</p>
+          Speech Synthesis,” in Proc. NeurIPS, 2020, vol. 33, pp. 17022–17033.</p>
         <p>[5] R. Yamamoto, E. Song, and J.-M. Kim, “Parallel WaveGAN: A fast waveform generation model based on
           generative adversarial networks with multi-resolution spectrogram,” in Proc. ICASSP, 2020, pp. 6199–6203.
         </p>
